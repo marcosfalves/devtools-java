@@ -149,10 +149,29 @@ installDbeaver()
 }
 
 installOhMyZSH()
-{
-    #https://github.com/deluan/zsh-in-docker
+{    
     echo "### Instalando Oh My Zsh ###"
-    sudo sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)
+    #https://github.com/deluan/zsh-in-docker
+    #sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)"
+    #chsh -s $(which zsh)
+    #echo "export SHELL=/usr/bin/zsh" | sudo tee -a /etc/profile > /dev/null 
+
+    #instala ZSH, OhMyZShell, tema powelevel10k e define como shell padrão
+    sudo apt install zsh -y
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    chsh -s $(which zsh)
+
+    #instala suporte a syntax para os comandos no shell
+    sudo apt install zsh-syntax-highlighting
+    sudo apt install zsh-autosuggestions
+
+    cp -a ohmyzshell/fonts/. ~/.fonts
+    fc-cache -rv
+
+    cp ohmyzshell/.zshrc ~/.zshrc
+    cp ohmyzshell/.p10k.zsh ~/.p10k.zsh
+
     echo -e "\nFinalizado instalação Oh My Zsh\n"
     echo "-------------------------//-------------------------"
 }
