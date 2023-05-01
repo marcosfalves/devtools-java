@@ -23,6 +23,7 @@ ATENÇÃO! Antes de qualquer instalação, atualize os pacotes por pelo menos UM
 6. JetBrains ToolBox
 7. Postman
 8. DBeaver CE
+9. VSCode
 98. Oh My Zsh
 99. Todos 
 00. Limpar lixo de pacotes
@@ -142,9 +143,16 @@ installPostman()
 installDbeaver()
 {
     echo "### Instalando DBeaver CE  ###"
-    curl "https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb" -o "/tmp/dbeaver-ce_latest_amd64.deb"
-    sudo apt-get --yes --fix-broken install /tmp/dbeaver-ce_latest_amd64.deb
+    curl -sL -o /tmp/dbeaver-ce_latest_amd64.deb https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb && sudo dpkg -i /tmp/dbeaver-ce_latest_amd64.deb
     echo -e "\nFinalizado instalação DBeaver CE\n"
+    echo "-------------------------//-------------------------"
+}
+
+installVsCode()
+{
+    echo "### Instalando Visual Studio Code  ###"
+    sudo apt install code
+    echo -e "\nFinalizado Visual Studio Code\n"
     echo "-------------------------//-------------------------"
 }
 
@@ -179,7 +187,7 @@ installOhMyZSH()
 installAll()
 {
     echo "### Instalando TODAS as tools ###"
-    updatePackages && installDocker && installDockerCompose && installGit && installAWSCli && installSDKMan && installJetBrainsToolBox && installPostman && installDbeaver && installOhMyZSH && clearPackages
+    updatePackages && installDocker && installDockerCompose && installGit && installAWSCli && installSDKMan && installJetBrainsToolBox && installPostman && installDbeaver && installVsCode && installOhMyZSH && clearPackages
     echo -e "\nFerramentas instaladas\n"
 }
 
@@ -216,11 +224,13 @@ case $tool in
 
     7)  installPostman ;;
 
-    8) installDbeaver ;;
+    8)  installDbeaver ;;
 
-    98) installOhMyZSH ;;
+    9)  installVsCode ;;
 
-    99)  installAll && rebootSystem;;
+    98) installOhMyZSH && rebootSystem;;
+
+    99) installAll && rebootSystem;;
 
     00) clearPackages ;;
 
