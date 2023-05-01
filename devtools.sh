@@ -80,6 +80,7 @@ installDockerCompose()
 installGit()
 {
     echo -e "### Instalando GIT ###\n"
+    sudo add-apt-repository ppa:git-core/ppa -y
     sudo apt install git -y
     echo -e "\n Finalizado instalacao do GIT\n"
     echo "-------------------------//-------------------------"
@@ -106,9 +107,10 @@ installSDKMan()
     echo "-------------------------//-------------------------"
 
     echo "### Instalando versões LTS do Java (8, 11 e 17) ###"
-    sdk install java 8.0.362-tem
-    sdk install java 11.0.18-tem
-    sdk install java 17.0.6-tem
+    # < /dev/null força resposta yes para default
+    sdk install java 8.0.362-tem < /dev/null
+    sdk install java 11.0.18-tem < /dev/null
+    sdk install java 17.0.6-tem < /dev/null
 
     echo -e "\nFinalizado Instalação do Java.\n"
     echo "-------------------------//-------------------------"
@@ -118,8 +120,8 @@ installSDKMan()
 installJetBrainsToolBox()
 {
     echo "### Instalando JetBrains ToolBox  ###"
-    sudo add-apt-repository universe
-    sudo apt install libfuse2
+    sudo add-apt-repository universe -y
+    sudo apt install libfuse2 -y
     mkdir -p ~/apps
     tar -xvz -C ~/apps/ -f <(wget -q -O - https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.27.3.14493.tar.gz)
     ~/apps/jetbrains-toolbox-1.27.3.14493/./jetbrains-toolbox
@@ -132,7 +134,7 @@ installPostman()
 {
     echo "### Instalando Postman  ###"
     mkdir -p ~/apps
-    tar -xvz -C ~/apps/ -f <(wget -q -O - https://dl.pstmn.io/download/latest/linux_64)
+    tar -xz -C ~/apps/ -f <(wget -q -O - https://dl.pstmn.io/download/latest/linux_64)
     sudo cp ~/apps/Postman/app/icons/icon_128x128.png /usr/share/pixmaps/postman.png
     cp ./postman.desktop ~/.local/share/applications/postman.desktop
     chmod +x ~/.local/share/applications/postman.desktop
@@ -151,7 +153,7 @@ installDbeaver()
 installVsCode()
 {
     echo "### Instalando Visual Studio Code  ###"
-    sudo apt install code
+    sudo apt install code -y
     echo -e "\nFinalizado Visual Studio Code\n"
     echo "-------------------------//-------------------------"
 }
@@ -202,6 +204,7 @@ rebootSystem()
 clearPackages()
 {
     echo "### Limpando lixo de pacotes ###"
+    sleep 5s
     sudo apt autoremove
     sudo apt clean
     echo -e "\nFinalizando limpeza\n"
