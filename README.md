@@ -38,8 +38,8 @@ Shell Script para instalar ferramentas de desenvolvimento no Linux(Ubuntu)<br>
     - Depois executar novamente e digitar o código correspondente a ferramenta.
 5. Para melhor aparência do terminal OhMyZsh, após a instalação ajustar os terminais para utilizar a fonte MesloLGS, instruções:
 
-- **GNOME Terminal** (the default Ubuntu terminal): Open *Terminal → Preferences* and click on the selected profile under *Profiles*. Check *Custom font* under *Text Appearance* and select `MesloLGS NF Regular`.
+- **GNOME Terminal** (terminal padrão do Ubuntu): Abrir *Terminal → Preferences* e clique no perfil em uso em *Profiles*. Marque *Custom font* em *Text Appearance* e selecione `MesloLGS NF Regular`.
 
-- **Visual Studio Code**: Open *File → Preferences → Settings* (PC) or *Code → Preferences → Settings* (Mac), enter `terminal.integrated.fontFamily` in the search box at the top of *Settings* tab and set the value below to `MesloLGS NF`. Consult [this screenshot](https://raw.githubusercontent.com/romkatv/powerlevel10k-media/389133fb8c9a2347929a23702ce3039aacc46c3d/visual-studio-code-font-settings.jpg) to see how it should look like or see [this issue](https://github.com/romkatv/powerlevel10k/issues/671) for extra information.
+- **Visual Studio Code**: Abrir *File → Preferences → Settings* (PC) ou *Code → Preferences → Settings* (Mac), digite `terminal.integrated.fontFamily` na caixa de pesquisa na parte superior da guia *Settings* e defina o valor abaixo como `MesloLGS NF`. Consulte [esta captura de tela](https://raw.githubusercontent.com/romkatv/powerlevel10k-media/389133fb8c9a2347929a23702ce3039aacc46c3d/visual-studio-code-font-settings.jpg) para ver como deve ser ou consulte [essa issue](https://github.com/romkatv/powerlevel10k/issues/671) para obter informações adicionais.
 
-- **IntelliJ** (and other IDEs by Jet Brains): Open *IDE → Edit → Preferences → Editor → Color Scheme → Console Font*. Select *Use console font instead of the default* and set the font name to `MesloLGS NF`.
+- **IntelliJ** (e outras IDEs da JetBrains): Abrir *IDE → Edit → Preferences → Editor → Color Scheme → Console Font*. Selecione *Use console font instead of the default* e defina o nome da fonte para `MesloLGS NF`.
