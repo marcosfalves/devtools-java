@@ -27,6 +27,7 @@ Shell Script para instalar ferramentas de desenvolvimento no Linux(Ubuntu)<br>
    ```sh
    git clone https://github.com/marcosfalves/devtools-java.git
    ```
+   - Ou faça o download [aqui](https://github.com/marcosfalves/devtools-java/archive/refs/heads/master.zip)
 2. Abra o diretório e execute o script
     ```sh
     cd devtools-java
