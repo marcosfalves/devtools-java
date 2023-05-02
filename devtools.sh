@@ -108,9 +108,9 @@ installSDKMan()
 
     echo "### Instalando versões LTS do Java (8, 11 e 17) ###"
     # < /dev/null força resposta yes para default
-    sdk install java 8.0.362-tem < /dev/null
-    sdk install java 11.0.18-tem < /dev/null
-    sdk install java 17.0.6-tem < /dev/null
+    sdk install java 8.0.372-tem < /dev/null
+    sdk install java 11.0.19-tem < /dev/null
+    sdk install java 17.0.7-tem < /dev/null
 
     echo -e "\nFinalizado Instalação do Java.\n"
     echo "-------------------------//-------------------------"
@@ -123,7 +123,7 @@ installJetBrainsToolBox()
     sudo add-apt-repository universe -y
     sudo apt install libfuse2 -y
     mkdir -p ~/apps
-    tar -xvz -C ~/apps/ -f <(wget -q -O - https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.27.3.14493.tar.gz)
+    tar -xz -C ~/apps/ -f <(wget -q -O - https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.27.3.14493.tar.gz)
     ~/apps/jetbrains-toolbox-1.27.3.14493/./jetbrains-toolbox
     echo -e "\nFinalizado instalação JetBrains ToolBox\n"
     echo "-------------------------//-------------------------"
@@ -154,7 +154,7 @@ installVsCode()
 {
     echo "### Instalando Visual Studio Code  ###"
     sudo apt install code -y
-    echo -e "\nFinalizado Visual Studio Code\n"
+    echo -e "\nFinalizado instalação Visual Studio Code\n"
     echo "-------------------------//-------------------------"
 }
 
