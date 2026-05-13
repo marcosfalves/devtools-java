@@ -122,10 +122,9 @@ installJetBrainsToolBox()
 {
     echo "### Instalando JetBrains ToolBox  ###"
     mkdir -p ~/apps
-    cd ~/apps && \
     wget -4 --timeout=15 -O jetbrains-toolbox.tar.gz \
     "https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.4.3.81140.tar.gz" && \
-    tar -xzf jetbrains-toolbox.tar.gz && rm jetbrains-toolbox.tar.gz
+    tar -xzf jetbrains-toolbox.tar.gz -C ~/apps && rm jetbrains-toolbox.tar.gz
     sleep 2s
     ~/apps/jetbrains-toolbox-3.4.3.81140/bin/jetbrains-toolbox
     echo -e "\nFinalizado instalação JetBrains ToolBox\n"
@@ -137,8 +136,10 @@ installPostman()
 {
     echo "### Instalando Postman  ###"
     mkdir -p ~/apps
-    tar -xz -C ~/apps/ -f <(wget -q -O - https://dl.pstmn.io/download/latest/linux_64)
-    sudo cp ~/apps/Postman/app/icons/icon_128x128.png /usr/share/pixmaps/postman.png
+    wget -4 --timeout=15 -O postman.tar.gz \
+    "https://dl.pstmn.io/download/latest/linux_64" && \
+    tar -xzf postman.tar.gz -C ~/apps && rm postman.tar.gz
+    sudo cp ~/apps/Postman/app/resources/app/assets/icon.png /usr/share/pixmaps/postman.png
     cp ./postman.desktop ~/.local/share/applications/postman.desktop
     chmod +x ~/.local/share/applications/postman.desktop
     echo -e "\nFinalizado instalação Postman\n"
