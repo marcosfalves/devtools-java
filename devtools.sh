@@ -106,13 +106,14 @@ installSDKMan()
     echo -e "\nFinalizando instalação SDK Man\n"
     echo "-------------------------//-------------------------"
 
-    echo "### Instalando versões LTS do Java (8, 11 e 17) ###"
+    echo "### Instalando versões LTS do Java (17, 21 e 25) ###"
     # < /dev/null força resposta yes para default
-    sdk install java 8.0.372-tem < /dev/null
-    sdk install java 11.0.19-tem < /dev/null
-    sdk install java 17.0.7-tem < /dev/null
+    sdk install java 17.0.19-tem < /dev/null
+    sdk install java 21.0.11-tem < /dev/null
+    sdk install java 25.0.3-tem < /dev/null
 
-    echo -e "\nFinalizado Instalação do Java.\n"
+    sdk default java 17.0.19-tem
+    echo -e "\nFinalizado Instalação do Java. Selecionado como default Java 17\n"
     echo "-------------------------//-------------------------"
 }
 
@@ -120,11 +121,10 @@ installSDKMan()
 installJetBrainsToolBox()
 {
     echo "### Instalando JetBrains ToolBox  ###"
-    sudo add-apt-repository universe -y
-    sudo apt install libfuse2 -y
     mkdir -p ~/apps
-    tar -xz -C ~/apps/ -f <(wget -q -O - https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.27.3.14493.tar.gz)
-    ~/apps/jetbrains-toolbox-1.27.3.14493/./jetbrains-toolbox
+    tar -xz -C ~/apps/ -f <(wget -q -O - https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.4.3.81140.tar.gz)  
+    sleep 2s
+    ~/apps/jetbrains-toolbox-3.4.3.81140/./jetbrains-toolbox
     echo -e "\nFinalizado instalação JetBrains ToolBox\n"
     echo "-------------------------//-------------------------"
 }
@@ -153,6 +153,11 @@ installDbeaver()
 installVsCode()
 {
     echo "### Instalando Visual Studio Code  ###"
+    sudo apt install wget gpg apt-transport-https
+    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+    echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+    sudo apt update
     sudo apt install code -y
     echo -e "\nFinalizado instalação Visual Studio Code\n"
     echo "-------------------------//-------------------------"
@@ -168,8 +173,10 @@ installOhMyZSH()
 
     #instala ZSH, OhMyZShell, tema powelevel10k e define como shell padrão
     sudo apt install zsh -y
+    sleep 5s
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    sleep 5s
     chsh -s $(which zsh)
 
     #instala suporte a syntax para os comandos no shell
@@ -179,6 +186,7 @@ installOhMyZSH()
     cp -a ohmyzshell/fonts/. ~/.fonts
     fc-cache -rv
 
+    sleep 2s
     cp ohmyzshell/.zshrc ~/.zshrc
     cp ohmyzshell/.p10k.zsh ~/.p10k.zsh
 
@@ -196,8 +204,8 @@ installAll()
 rebootSystem()
 {
     echo "### Instalação finalizada com sucesso! ###"
-    echo "### Reiniciando o sistema em 15s...... ###"
-    sleep 15s
+    echo "### Reiniciando o sistema em 60s...... ###"
+    sleep 60s
     sudo shutdown -r now
 }
 
