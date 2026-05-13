@@ -122,9 +122,12 @@ installJetBrainsToolBox()
 {
     echo "### Instalando JetBrains ToolBox  ###"
     mkdir -p ~/apps
-    tar -xz -C ~/apps/ -f <(wget -q -O - https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.4.3.81140.tar.gz)  
+    cd ~/apps && \
+    wget -4 --timeout=15 -O jetbrains-toolbox.tar.gz \
+    "https://download.jetbrains.com/toolbox/jetbrains-toolbox-3.4.3.81140.tar.gz" && \
+    tar -xzf jetbrains-toolbox.tar.gz && rm jetbrains-toolbox.tar.gz
     sleep 2s
-    ~/apps/jetbrains-toolbox-3.4.3.81140/./jetbrains-toolbox
+    ~/apps/jetbrains-toolbox-3.4.3.81140/bin/jetbrains-toolbox
     echo -e "\nFinalizado instalação JetBrains ToolBox\n"
     echo "-------------------------//-------------------------"
 }
