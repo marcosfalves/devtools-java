@@ -1,5 +1,5 @@
 #! /bin/bash
-## user-data: Criando ambiente inicial para Devs Java - Distro Ubuntu 22.04 LTS
+## user-data: Criando ambiente inicial para Devs Java - Distro Ubuntu 26.04 LTS
 ## By Marcos F. Alves
 ## Elaborado com base em: https://github.com/rodrigocesarmelo/devopstools
 
@@ -16,14 +16,13 @@ ATENÇÃO! Antes de qualquer instalação, atualize os pacotes por pelo menos UM
 
 0. Atualizar pacotes
 1. Docker
-2. Docker Compose
-3. Git
-4. AWS CLI
-5. SDK Man
-6. JetBrains ToolBox
-7. Postman
-8. DBeaver CE
-9. VSCode
+2. Git
+3. AWS CLI
+4. SDK Man
+5. JetBrains ToolBox
+6. Postman
+7. DBeaver CE
+8. VSCode
 98. Oh My Zsh
 99. Todos 
 00. Limpar lixo de pacotes
@@ -64,15 +63,6 @@ installDocker()
     sudo usermod -aG docker $USER
     echo -e "\nFinalizado instalacao do DOCKER\n"
 
-    echo "-------------------------//-------------------------"
-}
-
-
-installDockerCompose()
-{
-    echo -e "### Instalando DOCKER COMPOSE ###\n"
-    sudo apt install docker-compose -y
-    echo -e "\nFinalizado instalacao do DOCKER COMPOSE\n"
     echo "-------------------------//-------------------------"
 }
 
@@ -158,8 +148,8 @@ installVsCode()
 {
     echo "### Instalando Visual Studio Code  ###"
     sudo apt install wget gpg apt-transport-https
-    wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+    wget -4 -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+    sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg && rm packages.microsoft.gpg
     echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" | sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
     sudo apt update
     sudo apt install code -y
@@ -201,7 +191,7 @@ installOhMyZSH()
 installAll()
 {
     echo "### Instalando TODAS as tools ###"
-    updatePackages && installDocker && installDockerCompose && installGit && installAWSCli && installSDKMan && installJetBrainsToolBox && installPostman && installDbeaver && installVsCode && installOhMyZSH && clearPackages
+    updatePackages && installDocker && installGit && installAWSCli && installSDKMan && installJetBrainsToolBox && installPostman && installDbeaver && installVsCode && installOhMyZSH && clearPackages
     echo -e "\nFerramentas instaladas\n"
 }
 
@@ -227,21 +217,19 @@ case $tool in
 
     1)  installDocker && rebootSystem ;;
 
-    2)  installDockerCompose ;;
+    2)  installGit ;;    
 
-    3)  installGit ;;    
+    3)  installAWSCli ;;
 
-    4)  installAWSCli ;;
+    4)  installSDKMan ;;
 
-    5)  installSDKMan ;;
+    5)  installJetBrainsToolBox ;;
 
-    6)  installJetBrainsToolBox ;;
+    6)  installPostman ;;
 
-    7)  installPostman ;;
+    7)  installDbeaver ;;
 
-    8)  installDbeaver ;;
-
-    9)  installVsCode ;;
+    8)  installVsCode ;;
 
     98) installOhMyZSH && rebootSystem;;
 
@@ -249,5 +237,5 @@ case $tool in
 
     00) clearPackages ;;
 
-    *)  echo "Codigo Invalido" ;;
+    *)  echo "Código Inválido" ;;
 esac

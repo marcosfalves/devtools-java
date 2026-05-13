@@ -9,7 +9,7 @@ Shell Script para instalar ferramentas de desenvolvimento no Linux(Ubuntu)<br>
    - Instala ou atualiza para última versão
 4. AWS CLI
 5. SDK Man
-   - Java 8, 11 e 17
+   - Java 17, 21 e 25
 6. JetBrains ToolBox
    - Para facilitar a instalação das ferramentas da JetBrains
 7. Postman
